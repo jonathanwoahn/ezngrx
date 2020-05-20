@@ -1,6 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EzngrxComponent } from './ezngrx.component';
+import { EzngrxModule } from './ezngrx.module';
+import { DynamicStoreConfig } from './ezngrx.models';
+
+const config: DynamicStoreConfig = {
+  entities: [
+    { entity: 'Todo', },
+  ],
+  providers: [],
+};
+
 
 describe('EzngrxComponent', () => {
   let component: EzngrxComponent;
@@ -8,8 +18,11 @@ describe('EzngrxComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EzngrxComponent ]
-    })
+      declarations: [ EzngrxComponent ],
+      imports: [
+        EzngrxModule.forRoot(config),
+      ],
+      })
     .compileComponents();
   }));
 

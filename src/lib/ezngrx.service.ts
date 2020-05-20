@@ -1,9 +1,21 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class EzngrxService {
+import { InjectionToken } from '@angular/core';
+import { DynamicStoreConfig } from './ezngrx.models';
+import { IDynamicDataService } from './services/default-data.service';
 
-  constructor() { }
-}
+export const DYNAMIC_STORE_CONFIG = new InjectionToken<DynamicStoreConfig>('Dynamic Store Options');
+export const DYNAMIC_STORE_ENTITIES = new InjectionToken('Dynamic Store Entities');
+export const DYNAMIC_DATA_SERVICES = new InjectionToken<IDynamicDataService<any>[]>('Dynamic Data Services');
+export const DYNAMIC_DATA_PROVIDER = new InjectionToken('Dynamic Data Provider');
+
+
+
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class EzngrxService {
+
+//   constructor() { }
+// }
