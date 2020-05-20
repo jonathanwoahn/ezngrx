@@ -14,7 +14,7 @@ import {
   DynamicStoreConfig,
   EntityConfig,
 } from './ezngrx.models';
-import { getMetaReducers } from './meta-reducers';
+import { getLoggerReducer, getResetStateReducer, getOfflineSyncReducer } from './meta-reducers';
 import { DYNAMIC_STORE_CONFIG, DYNAMIC_DATA_PROVIDER } from './ezngrx.service';
 
 export function filterEntities(config: DynamicStoreConfig): EntityConfig<any>[] {
@@ -62,11 +62,24 @@ export class EzngrxModule {
           provide: DYNAMIC_STORE_CONFIG,
           useValue: config,
         },
-        // {
-        //   provide: META_REDUCERS,
-        //   deps: [DYNAMIC_STORE_CONFIG],
-        //   useFactory: getMetaReducers,
-        // },
+        // Manualy create providers for meta reducers, settings
+        {
+          provide: META_REDUCERS,
+          useFactory: getResetStateReducer,
+          multi: true,
+        },
+        {
+          provide: META_REDUCERS,
+          deps: [DYNAMIC_STORE_CONFIG],
+          multi: true,
+          useFactory: getLoggerReducer,
+        },
+        {
+          provide: META_REDUCERS,
+          deps: [DYNAMIC_STORE_CONFIG],
+          multi: true,
+          useFactory: getOfflineSyncReducer,
+        },
         ...config.providers,
       ],
     };

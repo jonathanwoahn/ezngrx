@@ -1,9 +1,9 @@
 {
   "name": "@woahn/ezngrx",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "peerDependencies": {
-    "@angular/common": "^8.2.14",
-    "@angular/core": "^8.2.14",
+    "@angular/common": "^9.1.2",
+    "@angular/core": "^9.1.2",
     "@ngrx/effects": "^9.1.2",
     "@ngrx/entity": "^9.1.2",
     "@ngrx/router-store": "^9.1.2",
@@ -15,7 +15,7 @@
   },
   "devDependencies": {},
   "description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.",
-  "main": "karma.conf.js",
+  "main": "public-api.js",
   "scripts": {
     "test": "ng test"
   },

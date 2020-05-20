@@ -4,11 +4,22 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { RESET_ALL } from './actions/dynamic.actions';
 import { DynamicStoreConfig } from './ezngrx.models';
 
+export function empty(reducer: ActionReducer<any>): ActionReducer<any> {
+  return (state, action) => reducer(state, action);
+}
+
 export function getEntityKeys(config: DynamicStoreConfig): string[] {
   return config.entities
   .filter(entityConfig => entityConfig.persist !== false)
   .map(entityConfig => entityConfig.entity);
 }
+
+export const getLoggerReducer = (config?: DynamicStoreConfig): ActionReducer<any> => {
+  if (config && config.enableLogging) {
+    return logger;
+  }
+  return empty;
+};
 
 export function logger(reducer: ActionReducer<State<any>>): any {
   const options = {
@@ -38,21 +49,34 @@ export function resetState(reducer: ActionReducer<any>): ActionReducer<any> {
   };
 }
 
-export function getMetaReducers(config?: DynamicStoreConfig) {
-  const reducers: any[] = [
-    resetState,
-  ];
+export const getResetStateReducer = (): ActionReducer<any> => resetState;
 
-  if (config && config.enableLogging) {
-    reducers.push(logger);
-  }
-
+export const getOfflineSyncReducer = (config?: DynamicStoreConfig): ActionReducer<any> => {
   if (config.enableOfflineSync) {
     const keys = getEntityKeys(config);
     const syncEntities = config.syncEntities || [];
     const storeSync = storageSyncReducer([...keys, ...syncEntities]);
-    reducers.push(storeSync);
+    return storeSync;
   }
+  return empty;
+};
 
-  return reducers;
-}
+// export function getMetaReducers(config?: DynamicStoreConfig) {
+//   // const reducers: any[] = [
+//   //   resetState,
+//   // ];
+
+//   // if (config && config.enableLogging) {
+//   //   reducers.push(logger);
+//   // }
+
+//   // if (config.enableOfflineSync) {
+//   //   const keys = getEntityKeys(config);
+//   //   const syncEntities = config.syncEntities || [];
+//   //   const storeSync = storageSyncReducer([...keys, ...syncEntities]);
+//   //   reducers.push(storeSync);
+//   // }
+
+//   // return reducers;
+//   return resetState;
+// }
