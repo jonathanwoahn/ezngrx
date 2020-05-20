@@ -1,6 +1,6 @@
 {
   "name": "@woahn/ezngrx",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "peerDependencies": {
     "@angular/common": "^9.1.2",
     "@angular/core": "^9.1.2",
@@ -11,13 +11,13 @@
     "@ngrx/store-devtools": "^9.1.2",
     "ngrx-store-logger": "^0.2.4",
     "ngrx-store-localstorage": "^9.0.0"
-    
   },
   "devDependencies": {},
   "description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.",
   "main": "public-api.js",
   "scripts": {
-    "test": "ng test"
+    "test": "ng test",
+    "publish": "ng build && cd ../../dist/ezngrx && npm publish"
   },
   "repository": {
     "type": "git",
