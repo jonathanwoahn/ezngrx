@@ -27,7 +27,7 @@ In your Angular `AppModule`
 You'll need to add the dependency, create the config file, and pass it in as a parameter to `.forRoot` on the module
 
 ```javascript
-import { DynamicNgrxModule, DynamicStoreConfig } from 'dynamic-ngrx';
+import { DynamicNgrxModule, DynamicStoreConfig } from '@woahn/ezngrx';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -100,14 +100,14 @@ export class AppComponent {
 This library is well suited for anyone that wants to use NGRX to manage large amount of entities,
 and wants standard CRUD type functionality with those entities.
 
-The main benefits of this library, our of the box, are:
+The main benefits of this library, out of the box, are:
 - Immediate connectivity of Redux Dev Tools
 - Detailed Action Logging
 - Offline Sync
-- Rapidly add new entities
+- Add fully operational state entities with a single line of code
 - Full CRUD functionality for all entities
 - All entity adaptors accessible
-- Easily connect with external data providers
+- Easily connect with external data providers and API's
 
 
 ### DynamicNgrxModule

@@ -1,6 +1,6 @@
 {
   "name": "@woahn/ezngrx",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "peerDependencies": {
     "@angular/common": "^9.1.2",
     "@angular/core": "^9.1.2",
@@ -17,7 +17,7 @@
   "main": "public-api.js",
   "scripts": {
     "test": "ng test",
-    "publish": "ng build && cd ../../dist/ezngrx && npm publish"
+    "distribute": "ng build && cd ../../dist/ezngrx && npm publish"
   },
   "repository": {
     "type": "git",

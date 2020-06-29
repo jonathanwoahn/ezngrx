@@ -58,6 +58,8 @@ export class DynamicFacade<T> {
       .subscribe((entity: T) => this.selectedEntity$.next(entity));
   }
 
+  
+
   get entities(): T[] { return this.entities$.getValue(); }
   get selectedEntity(): T { return this.selectedEntity$.getValue(); }
 }
