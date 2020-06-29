@@ -137,12 +137,6 @@ The default data service handles the effects for every entity, unless otherwise 
 
 more readme to come ...
 
-
-## Known Issues
-The main issue I'm aware of at this time is the library throws an error when you try to build it using `--prod` or `--aot`.
-I have spent many hours trying to troubleshoot and resolve the error, so I would love some help figuring out why this is failing.
-In the mean time, if you build your project with any other settings, it should work just fine.
-
 ## Roadmap
 - Convert offline mode to work with IndexedDB instead of Localstorage
 - Depending on popularity, testing
