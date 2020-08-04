@@ -38,6 +38,7 @@ import {
   LoadEntitiesSuccess,
   LoadEntitiesFail,
   LoadEntitiesResolved,
+  ClearError,
 } from './dynamic.actions';
 
 export class ActionFactory<T> {
@@ -53,6 +54,10 @@ export class ActionFactory<T> {
 
   selectId(key: string): DynamicActions<T> {
     return new SelectEntityId<T>(this.entity, key);
+  }
+
+  clearError(): DynamicActions<T> {
+    return new ClearError<T>(this.entity);
   }
 
   /**

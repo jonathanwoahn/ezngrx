@@ -12,6 +12,8 @@ export class DynamicActionTypes {
   static selectId = 'Select Id'; // done
   static resetState = 'Reset State'; // done
   static load = 'Load Entities';
+  
+  static clearError = 'Clear Error';
 }
 
 export class DynamicActionResults {

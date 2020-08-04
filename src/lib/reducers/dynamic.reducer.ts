@@ -255,19 +255,27 @@ export function reducerWrapper<T>(entityConfig: EntityConfig<T>) {
           selectedId: null,
         };
 
+      // Clear the error the current entity
+      case (getDynamicActionType(entity, DynamicActionTypes.clearError, DynamicActionResults.clear)):
+        return {
+          ...state,
+          error: undefined,
+        };
+
       // Reset the entity state
       case (getDynamicActionType(entity, DynamicActionTypes.resetState)):
         return {
           ...initialState,
         };
 
-
+      // Load entities
       case (getDynamicActionType(entity, DynamicActionTypes.load)):
         return {
           ...state,
           loading: true,
         };
 
+      // Entities loaded successfully
       case (getDynamicActionType(entity, DynamicActionTypes.load, DynamicActionResults.success)):
         return {
           ...adapter.addAll(action.payload, state),
@@ -275,6 +283,7 @@ export function reducerWrapper<T>(entityConfig: EntityConfig<T>) {
           loaded: true,
         };
 
+      // Load entities fail
       case (getDynamicActionType(entity, DynamicActionTypes.load, DynamicActionResults.fail)):
         return {
           ...state,
@@ -282,6 +291,8 @@ export function reducerWrapper<T>(entityConfig: EntityConfig<T>) {
           error: action.payload,
         };
 
+
+      // Load entities already called, resolving current state
       case (getDynamicActionType(entity, DynamicActionTypes.load, DynamicActionResults.resolved)):
         return {
           ...state,
@@ -299,3 +310,4 @@ export function reducerWrapper<T>(entityConfig: EntityConfig<T>) {
 }
 
 export const selectedEntityId = (state: DynamicState<any>) => state.selectedId;
+export const entityError = (state: DynamicState<any>) => state.error;

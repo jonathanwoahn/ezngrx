@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Dictionary } from '@ngrx/entity';
-import { getEntityAdapter, DynamicState, selectedEntityId } from '../reducers/dynamic.reducer';
+import { getEntityAdapter, DynamicState, selectedEntityId, entityError } from '../reducers/dynamic.reducer';
 import { EntityConfig } from '../ezngrx.models';
 
 export function selectEntityState<T>(entity: string) {
@@ -41,4 +41,8 @@ export function isLoading<T>(entityConfig: EntityConfig<T>): boolean {
 
 export function isLoaded<T>(entityConfig: EntityConfig<T>): boolean {
   return createSelector(selectEntityState<T>(entityConfig.entity), (state: DynamicState<T>) => !!(state || {} as any).loaded) as any;
+}
+
+export function getEntityError<T>(entityConfig: EntityConfig<T>): any {
+  return createSelector(selectEntityState<T>(entityConfig.entity), entityError) as any;
 }

@@ -10,9 +10,11 @@ import {
   getSelectedEntityId,
   isLoaded,
   isLoading,
+  getEntityError,
 } from '../selectors/dynamic.selectors';
 import { Dictionary } from '@ngrx/entity';
 import { EntityConfig } from '../ezngrx.models';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export class DynamicFacade<T> {
   actions: ActionFactory<T>;
@@ -26,6 +28,7 @@ export class DynamicFacade<T> {
   selectedEntityId$: Observable<string>;
   loading$: Observable<boolean>;
   loaded$: Observable<boolean>;
+  error$: Observable<HttpErrorResponse>;
 
   constructor(
     private entityConfig: EntityConfig<T>,
@@ -49,6 +52,7 @@ export class DynamicFacade<T> {
     this.selectedEntityId$ = this.store.select(getSelectedEntityId<T>(entityConfig) as any) as any;
     this.loaded$ = this.store.select(isLoaded<T>(entityConfig) as any) as any;
     this.loading$ = this.store.select(isLoading<T>(entityConfig) as any) as any;
+    this.error$ = this.store.select(getEntityError<T>(entityConfig)) as any;
 
     combineLatest(this.selectedEntityId$, this.objects$)
       .pipe(

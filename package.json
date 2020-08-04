@@ -1,6 +1,6 @@
 {
   "name": "@woahn/ezngrx",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "peerDependencies": {
     "@angular/common": "^9.1.2",
     "@angular/core": "^9.1.2",

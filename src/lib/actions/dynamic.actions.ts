@@ -247,6 +247,12 @@ export class ResetState<T> extends DynamicAction {
   }
 }
 
+export class ClearError<T> extends DynamicAction {
+  constructor(private entity: string, public payload?: any) {
+    super(entity, DynamicActionTypes.clearError, DynamicActionResults.clear);
+  }
+}
+
 /**
  * LOAD ENTITIES
  */
@@ -324,6 +330,7 @@ export type DynamicActions<T> =
   | SelectEntityId<T>
   | ClearSelectedId<T>
   | ResetState<T>
+  | ClearError<T>
   // LOAD
   | LoadEntities<T>
   | LoadEntitiesSuccess<T>
