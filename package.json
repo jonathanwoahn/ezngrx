@@ -1,0 +1,15 @@
+{
+  "name": "ezngrx",
+  "version": "0.1.0",
+  "peerDependencies": {
+    "@angular/common": "^12.2.0",
+    "@angular/core": "^12.2.0",
+    "@ngrx/effects": "^12.5.1",
+    "@ngrx/entity": "^12.5.1",
+    "@ngrx/store": "^12.5.1",
+    "@ngrx/store-devtools": "^12.5.1"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}
