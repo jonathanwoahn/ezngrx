@@ -68,9 +68,6 @@ export class EzngrxModule {
     private effectSources: EffectSources,
     private dynamicEffectFactoryService: DynamicEffectFactoryService<any>,
   ) {
-
-    
-    
     let effects: any[] = [];
     const reducers = this.config.entities.reduce((result: any, entityConfig: EntityConfig<any>) => {
       effects = [

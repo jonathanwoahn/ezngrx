@@ -64,31 +64,40 @@ The example code below demonstrates how to access the entity observable, as well
 
 ```javascript
 export class AppComponent {
-  @ViewChild('todoInput') todoInput: ElementRef;
-
+  @ViewChild('todoInput', { static: false }) todoInput!: ElementRef;
+  
   todos$: Observable<Todo[]>;
-
+  
   private todoFacade: DynamicFacade<Todo>;
+  
   constructor(
-    private dynamicFacadeService: DynamicFacadeService,
-    private store: Store<any>,
+    private facadeService: DynamicFacadeService,
   ) {
-    this.todoFacade = this.dynamicFacadeService.getFacade<Todo>('Todo');
+    this.todoFacade = this.facadeService.getFacade<Todo>('Todos');
     this.todos$ = this.todoFacade.entities$;
   }
 
-  addTodo(event): void {
-    if (event.keyCode !== 13) { return; }
+  addTodo(event: KeyboardEvent): void {
+    if (event.keyCode !== 13 ) { return; }
+
     const todo: Todo = {
-      id: uuid(),
+      id: this.uuid(),
       text: this.todoInput.nativeElement.value,
     };
-    this.store.dispatch(this.todoFacade.actions.addOne(todo));
+
+    this.todoFacade.dispatcher.addOne(todo);
     this.todoInput.nativeElement.value = '';
   }
 
-  removeTodo(todo: Todo): void {
-    this.store.dispatch(this.todoFacade.actions.removeOne(todo.id));
+  removeItem(todo: Todo): void {
+    this.todoFacade.dispatcher.removeOne(todo.id);
+  }
+
+  private uuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
   }
 }
 
