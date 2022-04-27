@@ -150,10 +150,9 @@ export class ActionDispatcher<T> {
     // /**
     //  * REMOVE MANY
     //  */
-    // removeMany(entityIds: string[]): void {
-    //     this.store.dispatch()
-    //     // return new RemoveManyEntities<T>(this.entity, entityIds);
-    // }
+    removeMany(entityIds: string[]): void {
+        this.store.dispatch(this.actions.removeMany(entityIds));
+    }
 
     // removeManySuccess(entityIds: string[]): void {
     //     this.store.dispatch()
@@ -168,10 +167,9 @@ export class ActionDispatcher<T> {
     // /**
     //  * REMOVE ALL
     //  */
-    // removeAll(): void {
-    //     this.store.dispatch()
-    //     // return new RemoveAllEntities<T>(this.entity);
-    // }
+    removeAll(): void {
+        this.store.dispatch(this.actions.removeAll());
+    }
 
     // removeAllSuccess(): void {
     //     this.store.dispatch()
@@ -186,10 +184,9 @@ export class ActionDispatcher<T> {
     // /**
     //  * UPDATE ONE
     //  */
-    // updateOne(entity: T): void {
-    //     this.store.dispatch()
-    //     // return new UpdateOneEntity<T>(this.entity, entity);
-    // }
+    updateOne(entity: T): void {
+        this.store.dispatch(this.actions.updateOne(entity));
+    }
 
     // updateOneSuccess(entity: T): void {
     //     this.store.dispatch()
@@ -204,10 +201,9 @@ export class ActionDispatcher<T> {
     // /**
     //  * UPDATE MANY
     //  */
-    // updateMany(entities: T[]): void {
-    //     this.store.dispatch()
-    //     // return new UpdateManyEntities<T>(this.entity, entities);
-    // }
+    updateMany(entities: T[]): void {
+        this.store.dispatch(this.actions.updateMany(entities));
+    }
 
     // updateManySuccess(entities: T[]): void {
     //     this.store.dispatch()
@@ -222,10 +218,9 @@ export class ActionDispatcher<T> {
     // /**
     //  * UPSERT ONE
     //  */
-    // upsertOne(entity: T): void {
-    //     this.store.dispatch()
-    //     // return new UpsertOneEntity<T>(this.entity, entity);
-    // }
+    upsertOne(entity: T): void {
+        this.store.dispatch(this.actions.upsertOne(entity));
+    }
 
     // upsertOneSuccess(entity: T): void {
     //     this.store.dispatch()
@@ -240,10 +235,9 @@ export class ActionDispatcher<T> {
     // /**
     //  * UPSERT MANY
     //  */
-    // upsertMany(entities: T[]): void {
-    //     this.store.dispatch()
-    //     // return new UpsertManyEntities<T>(this.entity, entities);
-    // }
+    upsertMany(entities: T[]): void {
+        this.store.dispatch(this.actions.upsertMany(entities));
+    }
 
     // upsertManySuccess(entities: T[]): void {
     //     this.store.dispatch()
@@ -259,10 +253,9 @@ export class ActionDispatcher<T> {
     //  * LOAD ENTITIES
     //  */
 
-    // load(query: Object, force = false): void {
-    //     this.store.dispatch()
-    //     // return new LoadEntities<T>(this.entity, { query, force });
-    // }
+    load(query: Object, force = false): void {
+        this.store.dispatch(this.actions.load(query, force));
+    }
 
     // loadResolved(): void {
     //     this.store.dispatch()
